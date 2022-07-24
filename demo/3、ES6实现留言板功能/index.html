@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6实现留言板实例</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/demo.css">
+</head>
+
+<body>
+  <div class="msg-container container">
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-1 control-label">昵称：</label>
+        <div class="col-sm-11">
+          <input type="email" class="form-control name" id="inputEmail3" placeholder="请输入昵称">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">留言：</label>
+        <div class="col-sm-11">
+          <textarea class="form-control message" rows="5" placeholder="请输入内容"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-11">
+          <button type="submit" class="btn btn-success submit">提交留言</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">留言列表</div>
+      <div class="panel-body">
+        <ul class="list-group messageList">
+          <!-- <li class="list-group-item">张三
+                    <span>说：</span>大家好！
+                </li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/jquery-1.11.0.min.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录注册+CRUD</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+  <div id="app">
+    <div class="login-container">
+      <div class="title">登录/注册</div>
+      <div class="form-wrapper">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+          <el-form-item label="用户名" prop="username">
+            <el-input v-model="ruleForm.username" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="密码" prop="password">
+            <el-input v-model="ruleForm.password" clearable show-password></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onClickLogin('ruleForm')">登录</el-button>
+            <el-button @click="onClickRegister('ruleForm')">注册</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+    </div>
+  </div>
+
+  <!-- import Vue before Element -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.5/vue.min.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  
+  <script src="./js/http.js"></script>
+  <script src="./js/login.js"></script>
+</body>
+</html>

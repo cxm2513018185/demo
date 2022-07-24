@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表格CRUD</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div id="table">
+    <div class="add">
+      <input type="text" id="title" class="title" placeholder="标题" />
+      <input type="text" id="publish" class="publish" placeholder="发布人" />
+      <input type="date" id="publishTime" class="publishTime" placeholder="发布时间" />
+      <button id="addBtn">新增</button>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>标题</th>
+          <th>发布人</th>
+          <th>发布时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="mtable">
+        <!-- <tr v-for="(item,index) in items">
+          <td>{{index+1}}</td>
+          <td>{{item.title}}</td>
+          <td>{{item.user}}</td>
+          <td>{{item.dates}}</td>
+          <td>
+            <span @click="deletelist(item.id,index)" class="delete">删除</span>
+            <span class="edit" @click="edit(item)">编辑</span>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+
+    <div id="mask">
+      <div class="mask">
+        <div class="title">
+          编辑
+          <span class="close">x</span>
+        </div>
+        <div class="content">
+          <input type="text" hidden id="edit-id" />
+          <input type="text" id="edit-title" placeholder="标题" />
+          <input type="text" id="edit-publish" placeholder="发布人" />
+          <input type="date" id="edit-publishTime" placeholder="发布时间" />
+          <button class="updateBtn">更新</button>
+          <button class="closeBtn">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/jquery-1.11.1.min.js"></script>
+  <script src="./js/http.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>

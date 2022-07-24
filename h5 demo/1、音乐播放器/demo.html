@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+    <div class="music">
+        <div class="container">
+            <h3 id="musicName">音乐播放列表</h3>
+            <audio controls id="audio"></audio>
+            <!-- controls 如果出现该属性，则向用户显示控件，比如播放按钮
+            loop 布尔属性；如果指定，将循环播放音频。
+            autoplay 音频在就绪后马上播放
+            muted   规定视频输出应该被静音
+            src 要播放的音频的 URL
+         -->
+            <div class="btn">
+                <button id="play">开始</button>
+                <button id="pause">暂停</button>
+                <button id="prev">上一首</button>
+                <button id="next">下一首</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/demo.js"></script>
+</body>
+</html>

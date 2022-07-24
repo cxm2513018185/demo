@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <title>多文件上传</title>
+</head>
+
+<body>
+    <div>
+        多文件上传：
+        <input type="file" value="" id="file" accept="image/*" multiple />
+        <button id="upload">上传</button>
+    </div>
+    <div id="imgs"></div>
+</body>
+<script>
+    var input = document.querySelector("#file");
+    var upload = document.querySelector("#upload");
+
+    upload.onclick = function () {
+        var files = !!input.files ? input.files : [];
+        if (!files.length || !window.FileReader) {
+            console.log("浏览器不支持HTML5");
+            return false;
+        };
+        var fd = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            fd.append('files', files[i]);
+        };
+
+        var request = new XMLHttpRequest();
+        request.open("POST", "http://localhost:3000/upload/multi");
+        request.send(fd);
+        request.onreadystatechange = function () {
+            if (request.readyState === 4 & request.status === 200) {
+                alert("上传成功");
+            }
+        }
+    }
+    //本地预览
+    input.onchange = function (e) {
+        var imgs = document.querySelector("#imgs");
+        for (var i = 0; i < e.target.files.length; i++) {
+            var img = document.createElement("img");
+            img.width = 100;
+            var file = e.target.files[i];//当前文件
+            console.log(file);
+            if (!(/^image\/.*$/i.test(file.type))) {
+                continue; //不是图片 就跳出这一次循环
+            };
+            var thisSrc = URL.createObjectURL(file); //静态方法会创建一个 DOMString,其中包含一个表示参数中给出的对象的URL
+            img.setAttribute('src', thisSrc);
+            img.onload = function () {
+                imgs.append(this);
+                URL.revokeObjectURL(thisSrc);//释放内存
+            }
+        }
+    }
+</script>
+
+</html>

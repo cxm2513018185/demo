@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1418845_jr3cy57e6a.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div id="app">
+        <div class="slidenav">
+            <div class="slide-title">
+                <h2 v-text="slideTitle"></h2>
+            </div>
+            <ul class="shop-list">
+                <li class="shop-item" v-for="(item,index) in slideData" :key="index">
+                    <div class="main-menu" :class="current == index ? 'active': ''" @click="current=index">
+                        <span class="main-icon"><i class="iconfont" :class="item.icon"></i>{{item.mainTitle}}</span>
+                        <span class="iconfont icon-shangjiantou arrow" :class="current == index ? 'show-up': 'show-down'"></span>
+                    </div>
+                    <ul class="sub-menu" v-show="current == index">
+                        <li class="sub-menu-item" v-for="(subitem,index) in item.subData" :key="index">
+                            <span><i class="iconfont" :class="subitem.icon"></i>{{subitem.subTitle}}</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

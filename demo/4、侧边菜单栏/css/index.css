@@ -1,0 +1,71 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+ul{list-style: none;}
+html,
+body,#app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#app {
+    background: url('../img/bg1.jpg') no-repeat center;
+    background-size: 100% 100%;
+}
+.slidenav {
+    width: 200px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.slide-title h2{
+    line-height: 40px;
+    font-size: 18px;
+    color:#f00;
+    text-align: center;
+    border-bottom:1px solid #ffffff;
+}
+
+.shop-list {
+    font-size: 16px;
+    color:#fff;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom:1px solid #fff;
+    padding:0 15px;
+    cursor: pointer;
+}
+.main-menu.active {
+    color:#2395ff;
+    border-bottom-color: #2395ff;
+}
+.main-menu > .main-icon > i {
+    margin-right: 5px;
+}
+.main-menu .arrow {
+    transition: all 0.5s ease-in;
+}
+.sub-menu {
+    
+}
+.sub-menu-item {
+    line-height: 45px;
+    cursor: pointer;
+}
+.sub-menu-item:hover {
+    background-color: #2395ff;
+}
+.sub-menu-item > span {
+    margin-left: 25px;
+}
+
+.show-up {
+    transform: rotate(180deg);
+}
+
+.show-down {
+    transform: rotate(90deg);
+}

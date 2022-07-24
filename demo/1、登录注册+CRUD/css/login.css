@@ -1,0 +1,44 @@
+.login-container {
+  /* 盒子居中：居中元素定宽高的情况 */
+  /* 1. absolute + 负margin */
+  /* position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -160px; */
+
+  /* 2. absolute + margin auto */
+  /* position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; */
+
+  /* 3. absolute + cacl */
+  position: absolute;
+  left: calc(50% - 250px);
+  top: calc(50% - 160px);
+
+  width: 500px;
+  height: 320px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.login-container > .title {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.login-container > .form-wrapper {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  right: 15px;
+  bottom: 0;
+  margin: auto;
+  width: 400px;
+  height: 240px;
+}

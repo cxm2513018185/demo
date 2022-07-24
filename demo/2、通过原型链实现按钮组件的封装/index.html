@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>按钮组件封装</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div class="btn btn-primary"></div>
+  <div class="btn btn-success"></div>
+  <div class="btn btn-danger"></div>
+
+  <script src="./js/index.js"></script>
+  <script>
+    // 定义按钮
+    let primaryBtn = new MyBtn('primary', 'bg-primary', 'btn-lg');
+    let successBtn = new MyBtn('success', 'bg-success', 'btn-xs');
+    let dangerBtn = new MyBtn('danger', 'bg-danger');
+
+    // 获取DOM
+    let primaryBtnDom = document.querySelector('.btn-primary');
+    let successBtnDom = document.querySelector('.btn-success');
+    let dangerBtnDom = document.querySelector('.btn-danger');
+
+    // 渲染DOM
+    primaryBtnDom.innerHTML = primaryBtn.renderHTML();
+    successBtnDom.innerHTML = successBtn.renderHTML();
+    dangerBtnDom.innerHTML = dangerBtn.renderHTML();
+  </script>
+</body>
+</html>

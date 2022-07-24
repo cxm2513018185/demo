@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新消息</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        p {
+            color: orange;
+            padding: 5px 10px;
+            margin: 0;
+        }
+
+        .user_msg {
+            color: #ccc;
+        }
+
+        #msgList {
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vertical-center">
+        <div class="container">
+            <ul id="msgList" class="list-unstyled">
+                <!-- <li>
+                    <p><span class="label label-warning"><i class="glyphicon glyphicon-plus"></i></span>通知</p>
+                </li>
+                <li>
+                    <p><span class="label label-warning"><i class="glyphicon glyphicon-bullhorn"></i></span>修改通知</p>
+                </li>
+                <li>
+                    <p class="user_msg"><span class="label label-info">张三</span>内容</p>
+                </li> -->
+            </ul>
+            <hr />
+            <form role="form" id="chat_form">
+                <div class="form-group">
+                    <input class="form-control" type="text" id="message" placeholder="请输入内容" autofocus />
+                </div>
+                <button type="button" id="send" class="btn btn-primary" onclick="sendMessage()">
+                    发送消息
+                </button>
+            </form>
+            <div class="form-group">
+                <span>你的昵称：</span>
+                <input id="name" type="text" />
+                <button class="btn btn-sm btn-info" onclick="changName()">修改</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        //连接服务器
+        var ws = new WebSocket("ws://localhost:3000");
+        //连接成功触发
+        ws.onopen = function () {
+            alert('连接成功')
+        };
+        //连接失败触发
+        ws.onerror = function () {
+            alert('连接失败')
+        };
+        //显示消息信息
+        function show(obj) {
+            if (!obj.message) return;
+            var msgList = document.getElementById("msgList"), //列表
+                _li = document.createElement("li"); //li
+            var str;
+            if (obj.type == 'notification') {  //消息通知
+                str = `<p><span class="label label-warning"><i class="glyphicon glyphicon-plus"></i></span>${obj.message}</p>`;
+            } else if (obj.type == 'message') { //正常消息
+                str = `<p class="user_msg"><span class="label label-info">${obj.nickname}</span>${obj.message}</p>`;
+            } else if (obj.type == 'nick_update') { //修改消息
+                str = `<p><span class="label label-warning"><i class="glyphicon glyphicon-bullhorn"></i></span>${obj.message}</p>`;
+            };
+            if (str) {  //图表的类型是实时推送
+                _li.innerHTML = str;
+                msgList.appendChild(_li);
+            }
+        };
+        //接收消息时触发
+        ws.onmessage = function (MessageEvent) {  //返回的数据  MessageEvent
+            console.log(MessageEvent.data); //{"type":"echart","nickname":"system","message":[114,179,371,554,652,765,788,818,882,952]}
+            var data = JSON.parse(MessageEvent.data);
+            show(data);
+        };
+        //发送数据
+        function sendMessage() {
+            var msg = document.getElementById("message");
+            //send(); 发送数据   WebSocket通过sent()方法向服务器端发送请求，onmessage 接收数据
+            if (ws.readyState == WebSocket.OPEN) {
+                ws.send(msg.value);
+            };
+            msg.value = "";  //清空信息
+            msg.focus();
+        };
+        //修改名称
+        function changName() {
+            var _name = document.getElementById("name").value;
+            if (ws.readyState == WebSocket.OPEN) {
+                ws.send('/nick_' + _name);
+            };
+        }
+        //关闭 ws.colose()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  user-select: none;
+  color: #fff;
+}
+
+.btn-default {
+  color: #fff;
+  background-color: #fff;
+}
+
+.bg-primary {
+  background-color: #337ab7;
+}
+
+.bg-success {
+  background-color: #5cb85c;
+}
+
+.bg-danger {
+  background-color: #d9534f;
+}
+
+.btn-lg {
+  font-size: 30px;
+}
+
+.btn-sm {
+  font-size: 12px;
+}
+
+.btn-xs {
+  font-size: 8px;
+}

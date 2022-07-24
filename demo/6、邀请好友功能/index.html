@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>邀请好友功能</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="my-app">
+        <div class="container">
+            <div class="row">
+                <!-- 左侧好友基本信息 -->
+                <div class="col-xs-6 col-sm-6">
+                    <div class="panel panel-success">
+                        <!-- 标题 -->
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                所有好友({{lists.length}}) / 当前选中({{selected.length}})
+                            </div>
+                        </div>
+                        <!-- 内容 -->
+                        <div class="panel-body panel-height">
+                            <ul>
+                              <li v-for="(item, index) in lists" 
+                                    :key="index" :class="item.state ? 'active' : ''" 
+                                    @click="addFriends(item)">
+                                  <span class="glyphicon glyphicon-user user"></span>
+                                  {{item.name}}({{item.qq}})
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 右侧显示所选择的好友 -->
+                <div class="col-xs-6 col-sm-6">
+                    <div class="panel panel-success">
+                        <!-- 标题 -->
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                已选择联系人({{selected.length}})
+                            </div>
+                        </div>
+                        <!-- 内容 -->
+                        <div class="panel-body panel-height">
+                            <ul>
+                              <li v-for="(item, index) in selected" 
+                                  :key="index" 
+                                  @mouseover="flag=index" 
+                                  @mouseout="flag='hide'"
+                              >
+                                  <span class="glyphicon glyphicon-user user"></span>
+                                  {{item.name}}({{item.qq}})
+                                  <span class="glyphicon glyphicon-trash"
+                                        @click="delFriends(item, index)" 
+                                        :class="item.state ? 'delete' : ''"
+                                        v-if="flag == index">
+                                  </span>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

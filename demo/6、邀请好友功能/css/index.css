@@ -1,0 +1,20 @@
+.container ul > li {
+    list-style-type: none;
+    padding: 10px;
+    margin-left: -45px;
+}
+.container ul > li:hover {
+    cursor: pointer;
+    background-color: #E2EFDA;
+    color: #fff;
+}
+.container .active {
+    color: orange;
+}
+.container .user {
+    margin-right: 10px;
+}
+.container .delete {
+    float: right;
+    color: red;
+}
